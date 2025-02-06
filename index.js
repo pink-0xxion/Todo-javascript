@@ -1,4 +1,4 @@
-// with array and map()
+// delete, update features
 
 const task = document.querySelector(".task");
 const addTask = document.querySelector(".add-btn");
@@ -10,12 +10,28 @@ let listTask = [];
 function strick() {
     const lists = document.querySelectorAll(".list");
 
-    for(let i = 0; i < lists.length; i++) {
-        lists[i].addEventListener("click", function() {
+    for (let i = 0; i < lists.length; i++) {
+        lists[i].addEventListener("click", function () {
             this.classList.toggle("strick");
         });
     }
-        
+
+}
+
+function deleteList() {
+    const task = document.querySelectorAll(".delete-btn");
+    console.log(task);
+
+    for (let i = 0; i < task.length; i++) {
+        task[i].addEventListener("click", function () {
+            // this.classList.toggle("strick");
+            console.log("delete funcion is called");
+            // listTask.pop(this);
+            console.log(this);
+            // listTask.splice(2, 3)
+            // console.log(listTask);
+        });
+    }
 }
 
 
@@ -31,12 +47,17 @@ addTask.addEventListener("click", () => {
     // );
 
     listTask.map((task, index) => {
-        display.innerHTML += `<li class="list" index="${index}">${task}</li>`; // index="${index}": This can help with future features like removing/editing tasks.
+        display.innerHTML += `<div class="new-task">
+                                <li class="list">${task}</li>
+                                <button index="${index}" class="delete-btn">Delete</button>
+                             </div>`; // index="${index}": This can help with future features like removing/editing tasks.
+
+        deleteList();
+
     }
     );
 
     strick();
-    
     task.value = "";
 });
 
