@@ -1,0 +1,63 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.container {
+    text-align: center;
+    border: 2px solid red;
+    width: 900px;
+    margin: 200px auto;
+    padding: 10px;
+}
+
+.add-task {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid pink;
+    padding: 40px;
+}
+
+.task {
+    width: 80%;
+    padding: 10px;
+    border-radius: 14px;
+}
+
+.add-btn {
+    padding: 10px;
+    background-color: black;
+    color: white;
+}
+
+
+.list {
+    width: 70%;
+    text-align: center;
+    background-color: azure;
+    list-style: none; /* Removes bullets */
+}
+
+.strick {
+    text-decoration: line-through;
+}
+
+.new-task {
+    margin-top: 20px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.delete-btn {
+    padding: 5px;
+    background-color: blue;
+    color: white;
+
+}
