@@ -27,35 +27,40 @@ function deleteList() {
             // this.classList.toggle("strick");
             console.log("delete funcion is called");
             // listTask.pop(this);
-            console.log(this);
-            // listTask.splice(2, 3)
-            // console.log(listTask);
+            console.log(this.getAttribute("index"));
+            listTask.splice(parseInt(this.getAttribute("index")), 1)
+            console.log(listTask);
         });
     }
 }
 
-
-addTask.addEventListener("click", () => {
+const renderTask = () => {
     if (task.value.trim() === "") return; // Prevent adding empty tasks
     display.innerHTML = ""; // Clear previous tasks before rendering
     listTask.push(task.value);
     console.log(listTask);
+    
+    listTask.map((task, index) => {
+        display.innerHTML += `<div class="new-task">
+                                <li class="list">${task}</li>
+                                <button index="${index}" class="delete-btn">Delete</button>
+                             </div>`; // index="${index}": This can help with future features like removing/editing tasks.
+    }
+    );
+}
+
+addTask.addEventListener("click", () => {
+   
 
     // display.innerHTML += listTask.map((task) => {
     //     return `<li class="list">${task}</li>`;
     // }
     // );
 
-    listTask.map((task, index) => {
-        display.innerHTML += `<div class="new-task">
-                                <li class="list">${task}</li>
-                                <button index="${index}" class="delete-btn">Delete</button>
-                             </div>`; // index="${index}": This can help with future features like removing/editing tasks.
+    renderTask();
 
-        deleteList();
+    deleteList();
 
-    }
-    );
 
     strick();
     task.value = "";
