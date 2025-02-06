@@ -1,33 +1,30 @@
-// with display.innerHTML += `<li class="list">${task.value}</li>` and custom toggle
+// with const listItem = document.createElement("li") and toggle 
 
 const task = document.querySelector(".task");
 const addTask = document.querySelector(".add-btn");
 const display = document.querySelector(".display");
 
 
-let toggle = false;
 
 function strick(lists) {
     lists.addEventListener("click", () => {
-
-        if(!toggle) {
-            lists.classList.add("strick");
-        } else {
-            lists.classList.remove("strick");
-        }
-        toggle = !toggle;
+            lists.classList.toggle("strick");
     });
 }
 
 
 addTask.addEventListener("click", () => {
+    if (task.value.trim() === "") return; // Prevent adding empty tasks
    
+    const listItem = document.createElement("li");
+    listItem.classList.add("list");
+    listItem.textContent = task.value;
+    display.appendChild(listItem);
 
-    display.innerHTML += `<li class="list">${task.value}</li>`;
-    const lists = document.querySelectorAll(".list");
-    strick(lists[lists.length - 1]);
+    strick(listItem);
 
     task.value = "";
 });
+
 
 // Becarefull on orders
